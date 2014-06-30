@@ -30,6 +30,10 @@ class cassandra::config(
     $endpoint_snitch,
     $internode_compression,
     $disk_failure_policy,
+    $read_request_timeout_in_ms,
+    $range_request_timeout_in_ms,
+    $write_request_timeout_in_ms,
+    $request_timeout_in_ms,
     $thread_stack_size,
 ) {
     group { 'cassandra':

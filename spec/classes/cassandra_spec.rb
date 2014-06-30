@@ -112,6 +112,10 @@ describe 'cassandra' do
         :start_native_transport     => 'false',
         :start_rpc                  => 'true',
         :native_transport_port      => 9042,
+        :read_request_timeout_in_ms => 5000,
+        :range_request_timeout_in_ms => 10000,
+        :write_request_timeout_in_ms => 2000,
+        :request_timeout_in_ms      => 10000,
         :num_tokens                 => 256,
       })
     end
@@ -172,6 +176,11 @@ describe 'cassandra' do
                     :start_rpc                  => [['true', 'false'], [9, 'bozo']],
                     :native_transport_port      => [[1, 65535], [420000, true]],
                     :num_tokens                 => [[1, 100000], [-1, true, 'bozo']],
+		    :read_request_timeout_in_ms => [[1, 1000000], [-1, true, 'bozo']],
+     		    :range_request_timeout_in_ms => [[1, 1000000], [-1, true, 'bozo']],
+     		    :write_request_timeout_in_ms => [[1, 1000000], [-1, true, 'bozo']],
+      		    :request_timeout_in_ms      => [[1, 1000000], [-1, true, 'bozo']],
+	
     }
 
     test_pattern.each do |param, pattern|

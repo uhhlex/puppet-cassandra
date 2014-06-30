@@ -40,6 +40,10 @@ describe 'cassandra::config' do
       :start_rpc                  => 'true',
       :native_transport_port      => 9042,
       :num_tokens                 => 256,
+      :read_request_timeout_in_ms => 5000,
+      :range_request_timeout_in_ms => 10000,
+      :write_request_timeout_in_ms => 2000,
+      :request_timeout_in_ms	  => 10000,
       :thread_stack_size          => 180,
     }
   end
@@ -118,6 +122,10 @@ describe 'cassandra::config' do
       :start_rpc                  => 'true',
       :native_transport_port      => 9042,
       :num_tokens                 => 256,
+      :read_request_timeout_in_ms => 5000,
+      :range_request_timeout_in_ms => 10000,
+      :write_request_timeout_in_ms => 2000,
+      :request_timeout_in_ms      => 10000,
       :thread_stack_size          => 128,
     }
   end

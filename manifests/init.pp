@@ -44,6 +44,10 @@ class cassandra(
     $disk_failure_policy        = $cassandra::params::disk_failure_policy,
     $thread_stack_size          = $cassandra::params::thread_stack_size,
     $service_enable             = $cassandra::params::service_enable,
+    $read_request_timeout_in_ms = $cassandra::params::read_request_timeout_in_ms,
+    $range_request_timeout_in_ms = $cassandra::params::range_request_timeout_in_ms,
+    $write_request_timeout_in_ms = $cassandra::params::write_request_timeout_in_ms,
+    $request_timeout_in_ms      = $cassandra::params::request_timeout_in_ms,
     $service_ensure             = $cassandra::params::service_ensure
 ) inherits cassandra::params {
     # Validate input parameters
@@ -104,6 +108,23 @@ class cassandra(
     if(!is_integer($storage_port)) {
         fail('storage_port must be a port number between 1 and 65535')
     }
+
+    if(!is_integer($read_request_timeout_in_ms)) {
+	fail('read_request_timeout_in_ms must be an integer')
+    }
+
+    if(!is_integer($range_request_timeout_in_ms)) {
+        fail('range_request_timeout_in_ms must be an integer')
+    }
+
+    if(!is_integer($write_request_timeout_in_ms)) {
+        fail('write_request_timeout_in_ms must be an integer')
+    }
+
+    if(!is_integer($request_timeout_in_ms)) {
+        fail('request_timeout_in_ms must be an integer')
+    }
+
 
     if(empty($seeds)) {
         fail('seeds must not be empty')
@@ -168,6 +189,10 @@ class cassandra(
         endpoint_snitch            => $endpoint_snitch,
         internode_compression      => $internode_compression,
         disk_failure_policy        => $disk_failure_policy,
+	read_request_timeout_in_ms => $read_request_timeout_in_ms,
+	range_request_timeout_in_ms => $range_request_timeout_in_ms,
+	write_request_timeout_in_ms => $write_request_timeout_in_ms,
+	request_timeout_in_ms	   => $request_timeout_in_ms,
         thread_stack_size          => $thread_stack_size,
     }
 

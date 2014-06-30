@@ -261,4 +261,21 @@ class cassandra::params {
         undef   => 'running',
         default => $::cassandra_service_ensure,
     }
+    $read_request_timeout_in_ms = $::cassandra_read_request_timeout_in_ms ? {
+	undef	=> 5000,
+	default => $::cassandra_read_request_timeout_in_ms,
+    }
+    $range_request_timeout_in_ms = $::cassandra_range_request_timeout_in_ms ? {
+        undef   => 10000,
+        default => $::cassandra_range_request_timeout_in_ms,
+    }
+    $write_request_timeout_in_ms = $::cassandra_write_request_timeout_in_ms ? {
+        undef   => 2000,
+        default => $::cassandra_write_request_timeout_in_ms,
+    }
+    $request_timeout_in_ms = $::cassandra_request_timeout_in_ms ? {
+        undef   => 10000,
+        default => $::cassandra_request_timeout_in_ms,
+    }
+
 }
