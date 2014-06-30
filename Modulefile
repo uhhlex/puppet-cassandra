@@ -1,5 +1,5 @@
 name         'uhhlex-cassandra'
-version      '0.4.0'
+version      '0.4.1'
 author       'Jochen Schalanda'
 license      'Apache 2.0'
 project_page 'https://github.com/uhhlex/puppet-cassandra'
